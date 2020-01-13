@@ -10,7 +10,7 @@ import Foundation
 
 struct HoroscopeAPICLient {
     
-    static func fetchHoroscopes(with string: String, completion: @escaping (Result <Horoscope , AppError>) -> () ){
+    static func fetchHoroscopes(with string: String, completion: @escaping (Result <Horoscopes , AppError>) -> () ){
         
         let horoscopeURLEndpoint = ""
         
@@ -28,7 +28,7 @@ struct HoroscopeAPICLient {
                 completion(.failure(.networkClientError(appError)))
             case .success(let data):
                 do {
-                    let horoscopeData = try JSONDecoder().decode(Horoscope.self, from: data)
+                    let horoscopeData = try JSONDecoder().decode(Horoscopes.self, from: data)
                    // let horoResults = horoscopeData
                    // completion(.success(horoscopeData))
                     completion(.success(horoscopeData))

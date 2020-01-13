@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct Horoscope: Codable {
+struct Horoscopes: Codable {
     let sunsign: String
     let date: String // is this correct
     let horoscope: String

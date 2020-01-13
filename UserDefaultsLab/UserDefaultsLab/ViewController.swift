@@ -12,15 +12,55 @@ class ViewController: UIViewController {
     
     // 2 textFields
     @IBOutlet weak var nameTextField: UITextField!
-    @IBOutlet weak var horoscopeTextField: UITextField!
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    @IBOutlet weak var horoscopePicker: UIPickerView!
+    
+    var picker = [String]()
+    
+    var selectedPicker = Horoscope.virgo {
+        didSet {
+            UserSettings.shared.updateHoroscope(with: selectedPicker)
+        }
         
     }
     
-    // if empty then is should prompt the user to add in infomation 
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        updateUI()
+         picker = ["Aries", "Taurus", "Gemini", "Cancer", "Leo", "Virgo", "Libra", "Scorpio", "Sagittarius", "Capricorn", "Aquarius", "Pisces"]
+        
+        horoscopePicker.delegate = self
+        horoscopePicker.dataSource = self
+        
+    }
+    
+    func updateUI(){
+        
+        if let endingHoroscope = UserSettings.shared.whichHoroscope() {
+            selectedPicker = endingHoroscope
+        }
+        
+    }
+   
 
+}
 
+extension ViewController: UIPickerViewDelegate {
+}
+
+extension ViewController: UIPickerViewDataSource {
+    
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return picker.count
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        return picker[row]
+    }
+    
 }
 
