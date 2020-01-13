@@ -9,11 +9,17 @@
 import UIKit
 
 class ViewController: UIViewController {
+    
+    // 2 textFields
+    @IBOutlet weak var nameTextField: UITextField!
+    @IBOutlet weak var horoscopeTextField: UITextField!
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        
     }
+    
+    // if empty then is should prompt the user to add in infomation 
 
 
 }
