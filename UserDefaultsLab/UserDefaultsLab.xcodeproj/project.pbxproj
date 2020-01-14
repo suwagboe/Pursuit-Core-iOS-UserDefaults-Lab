@@ -18,6 +18,7 @@
 		55B9812423CD07DA001AF391 /* AppError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55B9812323CD07DA001AF391 /* AppError.swift */; };
 		55B9812623CD0965001AF391 /* NetworkHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55B9812523CD0965001AF391 /* NetworkHelper.swift */; };
 		55B9812823CD1071001AF391 /* UserSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55B9812723CD1071001AF391 /* UserSettings.swift */; };
+		55BCDA2423CD3F2C0055DCFF /* DetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55BCDA2323CD3F2C0055DCFF /* DetailsViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +35,7 @@
 		55B9812323CD07DA001AF391 /* AppError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppError.swift; sourceTree = "<group>"; };
 		55B9812523CD0965001AF391 /* NetworkHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkHelper.swift; sourceTree = "<group>"; };
 		55B9812723CD1071001AF391 /* UserSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSettings.swift; sourceTree = "<group>"; };
+		55BCDA2323CD3F2C0055DCFF /* DetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -68,6 +70,7 @@
 			children = (
 				55B9810B23CD037F001AF391 /* Main.storyboard */,
 				55B9810923CD037F001AF391 /* ViewController.swift */,
+				55BCDA2323CD3F2C0055DCFF /* DetailsViewController.swift */,
 				55B9811D23CD064A001AF391 /* helper functions */,
 				55B9812223CD079F001AF391 /* model */,
 				55B9811A23CD0504001AF391 /* Supporting files */,
@@ -179,6 +182,7 @@
 			files = (
 				55B9812623CD0965001AF391 /* NetworkHelper.swift in Sources */,
 				55B9810A23CD037F001AF391 /* ViewController.swift in Sources */,
+				55BCDA2423CD3F2C0055DCFF /* DetailsViewController.swift in Sources */,
 				55B9812123CD06F4001AF391 /* HoroscopeModel.swift in Sources */,
 				55B9811F23CD0673001AF391 /* HoroscopeAPIClient.swift in Sources */,
 				55B9812823CD1071001AF391 /* UserSettings.swift in Sources */,

@@ -8,7 +8,7 @@
 
 import Foundation
 
-enum Horoscope: String {
+enum EnumHoroscope: String {
     case aries = "Aries"
     case taurus = "Taurus"
     case gemini = "Gemini"
@@ -34,20 +34,17 @@ class UserSettings {
     
         static let shared = UserSettings()
     
-    func updateHoroscope(with horoscope: Horoscope) {
+    func saveHoroscope(with horoscope: EnumHoroscope) {
         
-        UserDefaults.standard.set(horoscope.rawValue, forKey: userSettingsKey.defaultHoroscope)
-        
+UserDefaults.standard.set(horoscope.rawValue, forKey: userSettingsKey.defaultHoroscope)
     }
     
-    func whichHoroscope() ->Horoscope? {
+    func whichHoroscope() ->EnumHoroscope? {
        
         guard let gethoroscope = UserDefaults.standard.object(forKey: userSettingsKey.defaultHoroscope) as? String else {
             return nil
         }
-        return Horoscope(rawValue: gethoroscope
-        )
-        
+        return EnumHoroscope(rawValue: gethoroscope)
     }
     
 }
