@@ -12,7 +12,7 @@ struct HoroscopeAPICLient {
     
     static func fetchHoroscopes(with string: String, completion: @escaping (Result <HoroscopesFromAPI , AppError>) -> () ){
         
-        let horoscopeURLEndpoint = ""
+        let horoscopeURLEndpoint = "http://sandipbgt.com/theastrologer/api/horoscope/\(string)/today"
         
         guard let url = URL(string: horoscopeURLEndpoint) else {
             completion(.failure(.badURL(horoscopeURLEndpoint)))

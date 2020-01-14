@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class SettingsViewController: UIViewController {
     
     // 2 textFields
     @IBOutlet weak var nameTextField: UITextField!
@@ -17,44 +17,42 @@ class ViewController: UIViewController {
     
     @IBOutlet weak var moreInfoOutlet: UIButton!
     
+    // empty integer
+    var indexHolder: Int?
     
-    var zodiacSigns = [EnumHoroscope]()
+    var zodiacSigns = [EnumHoroscope]() // empty array of signs
+    
+    
    // var defaultHoroscope = "Virgo"
     
-    var selectedZodiacSign = EnumHoroscope.virgo {
+    var selectedZodiacSign = EnumHoroscope.virgo  {
         didSet {
-            
             // this is properly saving the
             UserSettings.shared.saveHoroscope(with: selectedZodiacSign)
-            
-            
         }
-        
-    }
-    
-    
+   }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        zodiacSigns = [EnumHoroscope.aries, EnumHoroscope.taurus, EnumHoroscope.gemini, EnumHoroscope.gemini, EnumHoroscope.leo, EnumHoroscope.virgo, EnumHoroscope.libra, EnumHoroscope.sagittarius, EnumHoroscope.scorpio, EnumHoroscope.capricorn, EnumHoroscope.aquarius, EnumHoroscope.pisces]
+        buttonSetUp() // the setup for the button when everything is loaded
+        // populates the data into the pickerView
+        zodiacSigns = [EnumHoroscope.aries, EnumHoroscope.taurus, EnumHoroscope.gemini, EnumHoroscope.cancer, EnumHoroscope.leo, EnumHoroscope.virgo, EnumHoroscope.libra, EnumHoroscope.sagittarius, EnumHoroscope.scorpio, EnumHoroscope.capricorn, EnumHoroscope.aquarius, EnumHoroscope.pisces]
         
         //["Aries", "Taurus", "Gemini", "Cancer", "Leo", "Virgo", "Libra", "Scorpio", "Sagittarius", "Capricorn", "Aquarius", "Pisces"]
+        
         horoscopePicker.delegate = self
         horoscopePicker.dataSource = self
        // setDefaultValue(item: Horoscope.virgo.rawValue)
-        
-        
-     
-    }
+        }
     
     //button starter
     func buttonSetUp(){
         moreInfoOutlet.isEnabled = false
+        moreInfoOutlet.tintColor = .red
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        guard let dvc = segue.destination as? DetailsViewController else {
+        guard let dvc = segue.destination as? moreInfoViewController else {
             fatalError("unable to segue to another view controller")
         }
         
@@ -63,38 +61,46 @@ class ViewController: UIViewController {
     
     
     @IBAction func moreInfoButton(_ sender: UIButton) {
+        // unwind segue ..
+    // userDefault to save the selection
                 
     }
     
-    func updateUI(){
-        if let endingHoroscope = UserSettings.shared.whichHoroscope() {
-            // TODO: refactor to use index of picker
-            // let sign = zodiacSigns[pickerIndex]
-            // horoscopePicker.selectRow(pickerIndex, inComponent: 0, animated: true)
-        }
-    }
+//    func saveDefaultsFunction(){
+//        if let endingHoroscope = UserSettings.shared.whichHoroscope() {
+//            // TODO: refactor to use index of picker
+//            // let sign = zodiacSigns[pickerIndex]
+//            // horoscopePicker.selectRow(pickerIndex, inComponent: 0, animated: true)
+//        }
+//    }
 
 }
 
-extension ViewController: UIPickerViewDelegate {
+extension SettingsViewController: UIPickerViewDelegate {
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         
         let sign = zodiacSigns[row]
         
         print(sign)
         
+        //selectedZodiacSign = sign
+        
+        
         selectedZodiacSign = sign
         
-        print(row)
+        // TODO: refactor to use index of picker
+        // let sign = zodiacSigns[pickerIndex]
+        // horoscopePicker.selectRow(pickerIndex, inComponent: 0, animated: true)
+        
         
         // TODO: save row index to UserDefaults e.g row 3 - > Gemeni
         // zodiacSigns[3] -> Gemeni
-        
+              
     }
     
 }
 
-extension ViewController: UIPickerViewDataSource {
+extension SettingsViewController: UIPickerViewDataSource {
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
     }
