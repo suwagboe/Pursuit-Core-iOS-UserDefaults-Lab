@@ -33,12 +33,17 @@ class moreInfoViewController: UIViewController {
     func loadName(){
         
         yournameLabel.text = "Welcome \( UserSettings.shared.retrieveSavedName()!.capitalized)"
-        
-        
-        
-        
     }
     
+    @IBAction func UnwindSegue(segue: UIStoryboardSegue){
+        guard segue.source is moreInfoViewController else {
+           
+            loadName()
+            getHoroscopeData()
+            
+            return
+        }
+    }
     
     // get the data from the link
     func getHoroscopeData(){

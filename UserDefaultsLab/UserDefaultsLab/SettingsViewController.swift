@@ -55,9 +55,16 @@ class SettingsViewController: UIViewController {
         updateInfoOutlet.isHidden = true
     }
     
+    
+
+    
     @IBAction func updateInfoButton(_ sender: UIButton) {
        
        // do i need a unwind segue
+        
+//        guard let destination = segue.source as? moreInfoViewController else {
+//            return
+//        }
         
         if textField.text!.isEmpty {
             updateInfoOutlet.isEnabled = true
@@ -77,14 +84,6 @@ extension SettingsViewController: UIPickerViewDelegate {
         checkIfPickerMoved = "Itmoved"
 
         selectedZodiacSign = sign
-        
-        // TODO: refactor to use index of picker
-        // let sign = zodiacSigns[pickerIndex]
-        // horoscopePicker.selectRow(pickerIndex, inComponent: 0, animated: true)
-        
-        
-        // TODO: save row index to UserDefaults e.g row 3 - > Gemeni
-        // zodiacSigns[3] -> Gemeni
               
     }
     
