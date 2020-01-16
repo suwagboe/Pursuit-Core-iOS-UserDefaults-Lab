@@ -11,11 +11,11 @@ import UIKit
 class SettingsViewController: UIViewController {
     
     // 2 textFields
-    @IBOutlet weak var TextField: UITextField!
+    @IBOutlet weak var nameTextField: UITextField!
 
     @IBOutlet weak var horoscopePicker: UIPickerView!
     
-    @IBOutlet weak var UpdateInfoOutlet: UIButton!
+    @IBOutlet weak var moreInfoOutlet: UIButton!
     
     // empty integer
    // var indexHolder: Int?
@@ -40,7 +40,7 @@ class SettingsViewController: UIViewController {
         
         //["Aries", "Taurus", "Gemini", "Cancer", "Leo", "Virgo", "Libra", "Scorpio", "Sagittarius", "Capricorn", "Aquarius", "Pisces"]
         
-        TextField.delegate = self
+        nameTextField.delegate = self
         horoscopePicker.delegate = self
         horoscopePicker.dataSource = self
        // setDefaultValue(item: Horoscope.virgo.rawValue)
@@ -48,8 +48,8 @@ class SettingsViewController: UIViewController {
     
     //button starter
     func buttonSetUp(){
-        UpdateInfoOutlet.isEnabled = false
-        UpdateInfoOutlet.tintColor = .red
+        moreInfoOutlet.isEnabled = false
+        moreInfoOutlet.tintColor = .red
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -65,10 +65,13 @@ class SettingsViewController: UIViewController {
     
     @IBAction func updateInfoButton(_ sender: UIButton) {
         // unwind segue ..
+    // userDefault to save the selection
        
-        // if the textfield has info and the picker has be moved then we good.
+       // guard let savedName = UserSettings.shared.saveTheName(with: nameTextField.text ?? "a name was not properly entered") else {
+          //  return
+        //}
         
-       // if text
+        
         
     }
     
@@ -113,26 +116,13 @@ extension SettingsViewController: UIPickerViewDataSource {
         return zodiacSigns[row].rawValue
     }
     
+   // selectedRow
     
 }
 
 extension SettingsViewController: UITextFieldDelegate {
     
     // once they press enter the name is persisted..
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        
-        
-        if textField.resignFirstResponder() {
-        // basically if they are done typing then the text that was typed should be saved
-             UserSettings.shared.saveTheName(with: textField.text ?? "please enter a name")
-            print("saved")
-           
-            
-         }
-        return true
-    }
-    
-    
-    
+    text
 }
 

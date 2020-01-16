@@ -13,6 +13,7 @@ class moreInfoViewController: UIViewController {
   
     @IBOutlet weak var yournameLabel: UILabel!
     
+    
     @IBOutlet weak var yourhoroscopeisLabel: UILabel!
     
     @IBOutlet weak var horosopeInformation: UITextView!
@@ -25,10 +26,14 @@ class moreInfoViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         getHoroscopeData()
+        loadName()
         
     }
     
-    func loadData(){
+    func loadName(){
+        
+        yournameLabel.text = UserSettings.shared.retrieveSavedName()
+        
         
         
         
