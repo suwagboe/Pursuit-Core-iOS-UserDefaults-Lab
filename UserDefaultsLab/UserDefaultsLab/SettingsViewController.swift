@@ -53,6 +53,7 @@ class SettingsViewController: UIViewController {
     //button starter
     func buttonSetUp(){
         updateInfoOutlet.isHidden = true
+        updateInfoOutlet.isEnabled = false
     }
     
     
@@ -81,6 +82,9 @@ extension SettingsViewController: UIPickerViewDelegate {
         
         print(sign)
         
+        updateInfoOutlet.tintColor = .blue
+        updateInfoOutlet.isEnabled = true
+        
         checkIfPickerMoved = "Itmoved"
 
         selectedZodiacSign = sign
@@ -105,14 +109,13 @@ extension SettingsViewController: UIPickerViewDataSource {
 extension SettingsViewController: UITextFieldDelegate {
     // once they press enter the name is persisted..
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        
-        
         if textField.resignFirstResponder() {
         // basically if they are done typing then the text that was typed should be saved
              UserSettings.shared.saveTheName(with: textField.text ?? "please enter a name")
             print("saved")
            
             updateInfoOutlet.isHidden = false
+            updateInfoOutlet.tintColor = .red
          }
         return true
     }
