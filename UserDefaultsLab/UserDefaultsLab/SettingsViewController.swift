@@ -18,7 +18,7 @@ class SettingsViewController: UIViewController {
     @IBOutlet weak var moreInfoOutlet: UIButton!
     
     // empty integer
-    var indexHolder: Int?
+   // var indexHolder: Int?
     
     var zodiacSigns = [EnumHoroscope]() // empty array of signs
     
@@ -56,23 +56,19 @@ class SettingsViewController: UIViewController {
             fatalError("unable to segue to another view controller")
         }
         
+        
+        
         //let selected =
     }
     
     
-    @IBAction func moreInfoButton(_ sender: UIButton) {
+    @IBAction func updateInfoButton(_ sender: UIButton) {
         // unwind segue ..
     // userDefault to save the selection
                 
     }
     
-//    func saveDefaultsFunction(){
-//        if let endingHoroscope = UserSettings.shared.whichHoroscope() {
-//            // TODO: refactor to use index of picker
-//            // let sign = zodiacSigns[pickerIndex]
-//            // horoscopePicker.selectRow(pickerIndex, inComponent: 0, animated: true)
-//        }
-//    }
+    // ???
 
 }
 

@@ -36,7 +36,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="UpdateInfo"/>
                                 <connections>
-                                    <action selector="moreInfoButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="3NX-BR-S0g"/>
+                                    <action selector="updateInfoButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="3NX-BR-S0g"/>
                                 </connections>
                             </button>
                         </subviews>

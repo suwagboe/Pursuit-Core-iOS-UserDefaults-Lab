@@ -25,6 +25,7 @@ enum EnumHoroscope: String {
 
 enum userSettingsKey {
     static let defaultHoroscope = "horoscope"
+    static let saveTheName = "enteredName"
 }
 
 class UserSettings {
@@ -38,13 +39,26 @@ class UserSettings {
         
 UserDefaults.standard.set(horoscope.rawValue, forKey: userSettingsKey.defaultHoroscope)
     }
+     
+    // I dont need an enum because I made the variable in the function that should be blank 
+    func saveTheName(with name: String){
+        UserDefaults.standard.set(name, forKey: userSettingsKey.saveTheName)
+    }
     
-    func whichHoroscope() ->EnumHoroscope? {
+    func retrieveSelectedHoroscope() ->EnumHoroscope? {
        
         guard let gethoroscope = UserDefaults.standard.object(forKey: userSettingsKey.defaultHoroscope) as? String else {
             return nil
         }
         return EnumHoroscope(rawValue: gethoroscope)
+    }
+    
+    func retrieveSavedName() -> String? {
+        
+        guard let getName = UserDefaults.standard.object(forKey: userSettingsKey.saveTheName) as? String else {
+            return nil
+        }
+        return getName
     }
     
 }

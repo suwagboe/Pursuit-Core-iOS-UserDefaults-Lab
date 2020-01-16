@@ -18,14 +18,21 @@ class moreInfoViewController: UIViewController {
     @IBOutlet weak var horosopeInformation: UITextView!
     
     
-    var sign = UserSettings.shared.whichHoroscope() ?? EnumHoroscope(rawValue: "virgo")
+    
+    var sign = UserSettings.shared.retrieveSelectedHoroscope() ?? EnumHoroscope(rawValue: "virgo")
         
     
     override func viewDidLoad() {
         super.viewDidLoad()
         getHoroscopeData()
+        
     }
     
+    func loadData(){
+        
+        
+        
+    }
     
     
     // get the data from the link
