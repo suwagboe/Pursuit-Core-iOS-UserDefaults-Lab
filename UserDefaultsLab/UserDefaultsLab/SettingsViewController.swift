@@ -11,11 +11,11 @@ import UIKit
 class SettingsViewController: UIViewController {
     
     // 2 textFields
-    @IBOutlet weak var TextField: UITextField!
+    @IBOutlet weak var textField: UITextField!
 
-    @IBOutlet weak var horoscopePicker: UIPickerView!
+    @IBOutlet weak var pickerView: UIPickerView!
     
-    @IBOutlet weak var UpdateInfoOutlet: UIButton!
+    @IBOutlet weak var updateInfoOutlet: UIButton!
     
     // empty integer
    // var indexHolder: Int?
@@ -23,7 +23,11 @@ class SettingsViewController: UIViewController {
     var zodiacSigns = [EnumHoroscope]() // empty array of signs
     
     
-   // var defaultHoroscope = "Virgo"
+    var checkIfPickerMoved : String? {
+        didSet {
+            updateInfoOutlet.isEnabled = true
+        }
+    }
     
     var selectedZodiacSign = EnumHoroscope.virgo  {
         didSet {
@@ -40,39 +44,26 @@ class SettingsViewController: UIViewController {
         
         //["Aries", "Taurus", "Gemini", "Cancer", "Leo", "Virgo", "Libra", "Scorpio", "Sagittarius", "Capricorn", "Aquarius", "Pisces"]
         
-        TextField.delegate = self
-        horoscopePicker.delegate = self
-        horoscopePicker.dataSource = self
+        textField.delegate = self
+        pickerView.delegate = self
+        pickerView.dataSource = self
        // setDefaultValue(item: Horoscope.virgo.rawValue)
         }
     
     //button starter
     func buttonSetUp(){
-        UpdateInfoOutlet.isEnabled = false
-        UpdateInfoOutlet.tintColor = .red
+        updateInfoOutlet.isHidden = true
     }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        guard let dvc = segue.destination as? moreInfoViewController else {
-            fatalError("unable to segue to another view controller")
-        }
-        
-        
-        
-        //let selected =
-    }
-    
     
     @IBAction func updateInfoButton(_ sender: UIButton) {
-        // unwind segue ..
        
-        // if the textfield has info and the picker has be moved then we good.
+       // do i need a unwind segue
         
-       // if text
+        if textField.text!.isEmpty {
+            updateInfoOutlet.isEnabled = true
+        }
         
     }
-    
-    // ???
 
 }
 
@@ -83,9 +74,8 @@ extension SettingsViewController: UIPickerViewDelegate {
         
         print(sign)
         
-        //selectedZodiacSign = sign
-        
-        
+        checkIfPickerMoved = "Itmoved"
+
         selectedZodiacSign = sign
         
         // TODO: refactor to use index of picker
@@ -99,25 +89,21 @@ extension SettingsViewController: UIPickerViewDelegate {
     }
     
 }
-
 extension SettingsViewController: UIPickerViewDataSource {
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
     }
     
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        
         return zodiacSigns.count
     }
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         return zodiacSigns[row].rawValue
     }
-    
-    
 }
-
 extension SettingsViewController: UITextFieldDelegate {
-    
     // once they press enter the name is persisted..
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         
@@ -127,12 +113,9 @@ extension SettingsViewController: UITextFieldDelegate {
              UserSettings.shared.saveTheName(with: textField.text ?? "please enter a name")
             print("saved")
            
-            
+            updateInfoOutlet.isHidden = false
          }
         return true
     }
-    
-    
-    
 }
 

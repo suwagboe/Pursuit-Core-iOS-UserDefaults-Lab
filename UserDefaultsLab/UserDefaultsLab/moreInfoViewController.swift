@@ -32,7 +32,7 @@ class moreInfoViewController: UIViewController {
     
     func loadName(){
         
-        yournameLabel.text = UserSettings.shared.retrieveSavedName()
+        yournameLabel.text = "Welcome \( UserSettings.shared.retrieveSavedName()!.capitalized)"
         
         
         
@@ -53,7 +53,7 @@ class moreInfoViewController: UIViewController {
                 DispatchQueue.main.async {
                     // MARK: needs to be optional and needs self
                     self?.horosopeInformation.text = horoscopeData.horoscope
-                    self?.yourhoroscopeisLabel.text = horoscopeData.sunsign
+                    self?.yourhoroscopeisLabel.text = "You said your horoscope is: \(horoscopeData.sunsign)"
                 }
             }
             

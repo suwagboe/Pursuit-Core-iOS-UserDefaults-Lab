@@ -31,6 +31,7 @@
                                 <state key="normal" title="UpdateInfo"/>
                                 <connections>
                                     <action selector="updateInfoButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="3NX-BR-S0g"/>
+                                    <segue destination="64H-i6-DMH" kind="show" id="Q3N-Tu-kGE"/>
                                 </connections>
                             </button>
                             <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="please enter your name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hla-9E-SUh">
@@ -49,9 +50,9 @@
                     </view>
                     <navigationItem key="navigationItem" id="88j-aj-mE7"/>
                     <connections>
-                        <outlet property="TextField" destination="hla-9E-SUh" id="M4b-O0-Md0"/>
-                        <outlet property="UpdateInfoOutlet" destination="yrm-aj-d1a" id="RmW-rn-pMb"/>
-                        <outlet property="horoscopePicker" destination="6GM-Fz-3Ah" id="p22-h0-VUX"/>
+                        <outlet property="pickerView" destination="6GM-Fz-3Ah" id="p22-h0-VUX"/>
+                        <outlet property="textField" destination="hla-9E-SUh" id="M4b-O0-Md0"/>
+                        <outlet property="updateInfoOutlet" destination="yrm-aj-d1a" id="RmW-rn-pMb"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -63,27 +64,17 @@
             <objects>
                 <viewController id="64H-i6-DMH" customClass="moreInfoViewController" customModule="UserDefaultsLab" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="y4n-jR-HZd">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="eEs-WD-uRI">
-                                <rect key="frame" x="75" y="255" width="240" height="386"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
-                                <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                            </textView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="your horoscope is:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="arK-t6-C7D">
-                                <rect key="frame" x="136.5" y="174" width="141" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="your horoscope is:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="arK-t6-C7D">
+                                <rect key="frame" x="60" y="125.5" width="294" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="your name is..." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4SQ-9r-pBZ">
-                                <rect key="frame" x="151" y="142" width="112" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="your name is..." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4SQ-9r-pBZ">
+                                <rect key="frame" x="70" y="75" width="274" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -96,11 +87,24 @@
                                     <segue destination="BYZ-38-t0r" kind="showDetail" id="Zw8-5g-8DV"/>
                                 </connections>
                             </button>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="eEs-WD-uRI">
+                                <rect key="frame" x="46" y="214" width="322" height="379"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstItem="arK-t6-C7D" firstAttribute="top" secondItem="9Hd-i4-DEQ" secondAttribute="top" constant="130" id="btU-vm-xat"/>
-                            <constraint firstItem="arK-t6-C7D" firstAttribute="centerX" secondItem="y4n-jR-HZd" secondAttribute="centerX" id="cWc-jG-Oxb"/>
+                            <constraint firstItem="9Hd-i4-DEQ" firstAttribute="trailing" secondItem="4SQ-9r-pBZ" secondAttribute="trailing" constant="70" id="0Qy-fL-BJD"/>
+                            <constraint firstItem="4SQ-9r-pBZ" firstAttribute="leading" secondItem="9Hd-i4-DEQ" secondAttribute="leading" constant="70" id="2Zu-P6-nxz"/>
+                            <constraint firstItem="arK-t6-C7D" firstAttribute="leading" secondItem="9Hd-i4-DEQ" secondAttribute="leading" constant="60" id="Ez3-Mh-yfT"/>
+                            <constraint firstItem="arK-t6-C7D" firstAttribute="top" secondItem="4SQ-9r-pBZ" secondAttribute="bottom" constant="30" id="Jaf-TU-viE"/>
+                            <constraint firstItem="4SQ-9r-pBZ" firstAttribute="top" secondItem="9Hd-i4-DEQ" secondAttribute="top" constant="75" id="WLn-OV-IER"/>
+                            <constraint firstItem="9Hd-i4-DEQ" firstAttribute="trailing" secondItem="arK-t6-C7D" secondAttribute="trailing" constant="60" id="YCt-DM-1Ao"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="9Hd-i4-DEQ"/>
                     </view>
