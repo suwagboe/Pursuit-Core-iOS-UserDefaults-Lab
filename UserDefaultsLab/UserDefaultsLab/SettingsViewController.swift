@@ -115,7 +115,7 @@ extension SettingsViewController: UITextFieldDelegate {
             print("saved")
            
             updateInfoOutlet.isHidden = false
-            updateInfoOutlet.tintColor = .red
+            updateInfoOutlet.tintColor = .blue
          }
         return true
     }

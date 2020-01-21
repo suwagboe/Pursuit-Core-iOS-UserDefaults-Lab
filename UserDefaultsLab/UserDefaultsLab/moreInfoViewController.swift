@@ -31,8 +31,10 @@ class moreInfoViewController: UIViewController {
     }
     
     func loadName(){
-        
-        yournameLabel.text = "Welcome \( UserSettings.shared.retrieveSavedName()!.capitalized)"
+        if let name = UserSettings.shared.retrieveSavedName() {
+            yournameLabel.text = "Welcome \(name)"
+        } else {
+            yournameLabel.text = "Welcome New User"}
     }
     
     @IBAction func UnwindSegue(segue: UIStoryboardSegue){
